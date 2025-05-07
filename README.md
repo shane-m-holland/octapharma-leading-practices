@@ -1,134 +1,68 @@
 # Cloud-Native Data Intake Patterns: Best Practices for Azure
 
-## Audience
-- Engineering team experienced in .NET, MSSQL, and on-prem deployments
-- New to Azure and cloud-native paradigms
 
----
+## Agenda
 
-## 📌 Objectives
-- Introduce common cloud-native data intake patterns
-- Explain how each pattern maps to Azure services
-- Share best practices for scalability, reliability, and cost optimization
-- Set foundational standards for moving from on-prem to cloud ETL
+- Solution Overview
+- Key Terminology
+- Infrastructure as Code
+- CI/CD
+- Alerting
+- Networking
 
----
 
-## 🧱 Core Concepts
 
-- **Azure Data Factory (ADF)**: Cloud-native ETL orchestration
-- **Azure Functions**: Serverless compute for lightweight processing
-- **Azure API Management (APIM)**: Secure and manage internal/external APIs
-- **Event Grid / Blob Storage Events**: Event-driven ingestion
-- **Azure SQL & CDC**: Change tracking and data movement
-- **Logic Apps / ADF Pipelines**: Time-based orchestration
+## Solution Overview
 
----
+![High Level Architecture](images/HighLevelArch.png)
 
-## 1. 📡 API-Based Data Intake
+## Key Terminology
 
-### Scenario
-Third-party or internal APIs provide structured data (e.g. JSON/XML) on request or event.
+**Cloud Resources:** refer to computing resources that are provided through a service provider (Azure, AWS, GCP,etc) over the internet. Examples include:
+- virtual machines
+- virtual networks
+- cloud databases
+- firewalls
+- monitoring tools
 
-### Components
-- Azure API Management
-- Azure Functions (intermediary)
-- Azure Data Factory (or Synapse pipelines)
+**Resource group:** a logical grouping of related cloud resources. Permissions and policies can be applied at the resource group level that are applied to all resources in the group.
 
-### Flow
-``Client → APIM → Azure Function → ADF Trigger``
+**Git:** A version control system used to track code changes that enables collaboration among developers. 
 
-### Best Practices
-- Use APIM to manage throttling, authentication, and versioning
-- Functions should be lightweight and stateless
-- Secure API endpoints using Azure AD or managed identities
-- Log structured telemetry with Application Insights
+**Git repository:** A structure of folders (or directories) and files that stores the code and all previous versions of it. To work on the repository it is common practice to clone the repository to your local machine and make changes on a branch that can be merged back to the master branch of the repository.
 
----
+**VSCode:** One example of a code editor that developers use to work on code in their local repository. It offers support for numerous programming languages and can be configured with extensions and keyboard shortcuts specific to your project.
 
-## 2. 📁 Internal File-Based Ingestion
+**Terraform:** Tool that allows you to manage both your on prem and cloud resources in a configuration language. These configuration files can be reused, versioned, and shared.  It is intended to manage all aspects of your cloud infrastructure. 
 
-### Scenario
-Business users or systems drop files (CSV, JSON, Excel) into a folder or shared location.
+**Terraform Remote State:** JSON file that contains the current configuration of cloud resources and any dependencies between resources. The state file can be stored locally but best practice is to store the state remotely so it can be accessed by multiple machines.
 
-### Components
-- Azure Blob Storage (or ADLS Gen2)
-- Azure Event Grid (for file trigger)
-- Azure Data Factory (for pipeline trigger and ingestion)
+**Azure DevOps:** Platform that offers tools for project management, code version control, CI/CD pipelines etc. 
 
-### Flow
-``File Upload → Event Grid → ADF Pipeline Trigger → Ingest to SQL/Blob``
+**Pipeline:** A defined series of jobs that software goes through between development and deployment. It can be run manually or triggered by an event such as a completed pull request to the master branch. Pipelines execute tasks such as building, testing, linting, generating reports etc that are generally automated but can include manual tasks for approvals as well.
 
-### Best Practices
-- Enforce naming conventions and folder structures
-- Use managed identity to secure storage access
-- Validate file schema and data quality in staging zone
-- Archive files post-processing for traceability
+[Glossary of Azure Specific Terminology](https://learn.microsoft.com/en-us/azure/azure-glossary-cloud-terminology)
 
----
 
-## 3. 🔄 Database Change Data Capture (CDC)
+**NOTE: We recommend digesting the [Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/) published by microsoft.  This has much deeper dives into all components of a Azure Environment and is kept up to date as features are released**  
 
-### Scenario
-Track and move only the changed records from an on-prem or cloud SQL database.
 
-### Components
-- Azure SQL Database (or SQL MI with CDC enabled)
-- Self-hosted Integration Runtime (if on-prem)
-- ADF Mapping Data Flows or Pipelines
+## Infrastructure as Code
 
-### Flow
-``SQL CDC Log → ADF Polling/Mapping Flow → Data Lake / DW``
+[IAC](IAC/Readme.md)
 
-### Best Practices
-- Enable CDC or Change Tracking on source tables
-- Schedule regular incremental loads instead of full loads
-- Tune retention and log cleanup settings
-- Monitor latency and missed changes
+## CI/CD
 
----
+[CICD](CICD/Readme.md)
 
-## 4. 🕒 Cron-Based Task Scheduling
+## Alerting
 
-### Scenario
-Periodic (e.g., nightly or hourly) tasks that trigger batch loads or API calls.
+[Alerting](Alerting/Readme.md)
 
-### Components
-- Azure Data Factory (Scheduled Triggers)
-- Azure Logic Apps or Azure Functions (for light orchestration)
+## Networking
 
-### Flow
-``Timer Trigger → ADF Pipeline Execution → ETL Logic``
+[Networking](Networking/Readme.md)
 
-### Best Practices
-- Define scheduling in UTC for consistency
-- Use parameterized pipelines for reusability
-- Use alerting on pipeline failure (via Monitor/Azure Alerts)
-- Avoid overlapping runs with pipeline concurrency control
+## Specific Modules for Proposed Archiecture
 
----
-
-## 🚦 Governance & Security Considerations
-
-- Implement **RBAC** and **Managed Identities**
-- Use **Private Endpoints** for Data Factory and Storage
-- Monitor all pipelines and storage events with **Azure Monitor** and **Log Analytics**
-- Implement **cost alerts and budgets** to track usage during early adoption
-
----
-
-## 🛠️ Developer Enablement
-
-- Use **Azure DevOps or GitHub** for CI/CD of ADF pipelines
-- Leverage **ARM Templates or Bicep** to deploy infrastructure
-- Use **parameter files** to support multiple environments (dev/test/prod)
-
----
-
-## 📚 Resources
-
-- [Azure Data Factory Documentation](https://learn.microsoft.com/en-us/azure/data-factory/)
-- [Azure Serverless Handbook](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview)
-- [APIM Best Practices](https://learn.microsoft.com/en-us/azure/api-management/)
-
----
+[Specific Modules for Proposed Archiecture](solution-arch-components.md)
