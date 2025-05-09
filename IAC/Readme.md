@@ -123,12 +123,7 @@ Terraform is a tool that allows you to manage both your on prem and cloud resour
 
 [Terraform Overview](https://developer.hashicorp.com/terraform/intro)
 
-<<<<<<< HEAD
-!["Terraform Image"](images/Terraform_Image.PNG)
-=======
 !["Terraform Image"](images/Terraform_Image.png)
->>>>>>> 9e27182cbc84c8d918c630a60a5d40cf6462b449
-
 
 **Drawbacks**
 - **Provider Limitations** - we are beholden to waiting for terraform to support newer api features or products.   This typically only involves the most advanced features but it is a limitation.
