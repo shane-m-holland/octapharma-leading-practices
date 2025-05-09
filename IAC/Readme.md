@@ -123,7 +123,11 @@ Terraform is a tool that allows you to manage both your on prem and cloud resour
 
 [Terraform Overview](https://developer.hashicorp.com/terraform/intro)
 
+<<<<<<< HEAD
 !["Terraform Image"](images/Terraform_Image.PNG)
+=======
+!["Terraform Image"](images/Terraform_Image.png)
+>>>>>>> 9e27182cbc84c8d918c630a60a5d40cf6462b449
 
 
 **Drawbacks**
