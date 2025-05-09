@@ -1,5 +1,5 @@
 
-# Module 1  -  Infrastructure as code
+# Infrastructure as code
 
 **Goal:** Learn and implement the core concepts of infrastructure as code.
 
@@ -82,7 +82,7 @@ There are some strong Anti-Patterns when it comes to the CLI (or the console).
 
 Don't do it, it is easy to do it but it is a strong anti-pattern.   The CLI should be seen as a tool to query and READ items in the cloud environment not a way to manipulate the cloud environment.   The proper way to manipulate the environment will be through terraform using IAC.
 
-!["How you should feel"](images/Use_Console.gif =350x200)
+!["How you should feel"](images/Use_Console.gif)
 
 #### **2)  Individual Users Having Administrator Access to the Console**
 
