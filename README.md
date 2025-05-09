@@ -63,6 +63,6 @@
 
 [Networking](Networking/Readme.md)
 
-## Specific Modules for Proposed Archiecture
+## Specific Modules for Proposed Architecture
 
-[Specific Modules for Proposed Archiecture](solution-arch-components.md)
+[Specific Modules for Proposed Architecture](solution-arch-components.md)

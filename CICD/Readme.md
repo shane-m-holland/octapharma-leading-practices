@@ -34,18 +34,18 @@ Git branching is a feature of version control that allows multiple developers to
   Command: ```git clone <URL>```  
 - **Remote Vs Local** - Git has a core concept of there being a central remote repository and when you clone a repository then it will fully copied to a local directory.
 - **Add** This will add a file, folder to the local repository and now under the control of git.  Files are not actually committed to the repository.  It does **not** commit the changes, it just lets git know that it should be tracking that file.  
-Comand: ```git add <filename>```  
+Command: ```git add <filename>```  
 - **Commit**   this will commit the changes to the working branch (normally local branch)  
 Command: ```git commit -m <commit message>```  
 - **Push** The push command will push your local repository changes (and commits) to the remote repository.  
-Comand: ```git push origin main```  
+Command: ```git push origin main```  
 - **Branch** copy of an active branch at a moment in time.  It allows the developer to make changes directly to the branch without worries on impacting the main branch  
 
 ![Git Branching](images/git_branches_merge.png)
 
 - **Pull Requests** Pull requests let you tell others about changes you've pushed to a branch in a repository on GitHub. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up commits before your changes are merged into the base branch.
 
-![Pull Requeset](images/PullRequest.png)
+![Pull Request](images/PullRequest.png)
 
 - **Tagging** - Git supports tagging to specific commits or pull requests.   it is recommended that you use [semantic versioning](https://semver.org/)
 Semantic Versioning Follows the pattern:  
@@ -71,9 +71,9 @@ The purpose of continuous integration is to automate the building and integratin
 
 - **Fail Fast** - the purpose of CI is to identify any issues as quickly as possible.
 - **Enforce Standards** - This is the time to ensure that standards are met (linting, test coverage, complexity)
-- **Quality Control** - Ensuring that qualtiy meets the expected standards (unit testing, integration testing, linting)
+- **Quality Control** - Ensuring that quality meets the expected standards (unit testing, integration testing, linting)
 
-Continuous integration is a practice used to keep a codebase stable by regularly commiting code to a share repository using some form of version control. This allows conflicts and bugs to be caught as early as possible within the development lifecycle. Tools such as Azure DevOps can be used to automatically test, build and merge code upon commits.
+Continuous integration is a practice used to keep a codebase stable by regularly committing code to a share repository using some form of version control. This allows conflicts and bugs to be caught as early as possible within the development lifecycle. Tools such as Azure DevOps can be used to automatically test, build and merge code upon commits.
 
 ## Continuous Delivery
 
@@ -83,7 +83,7 @@ The focus of continuous delivery is the automation of the deployment of features
 - **Testing**  - The focus of testing is on the deployment itself, the non-functionals, and any E2E testing
 - **Rollbacks** - Terraform itself does not "roll back", if you want roll back capabilities then it is up to the pipeline itself to rollback the release if needed.
 - **Tagging** - Both Git and Docker (which we learn later) has the capability of tagging.  To ensure consistency, it is recommended to use the pipeline to use the pipeline to tag.
-- **Automation** - It is normal to have manual stages in a deploy pipeline, that should be a business decision and not a technial one.   Everything should be automated.
+- **Automation** - It is normal to have manual stages in a deploy pipeline, that should be a business decision and not a technical one.   Everything should be automated.
 - **Approval Gates** - Approval Gates are used to manually approve moving to the next step in a pipeline.
 - **Release Gates** - Release Gates on gating agents in a pipeline where we are waiting for certain health criteria to be met (e.g. non-functional)
 ## Pipelines
@@ -138,7 +138,7 @@ Different pipelines can be triggered on different behaviors.   These behaviors c
 
 - commits - any time that new commits come into git
 - pull requests - any time that a new pull request is merged into the branch
-- tags - on the ceation of a new tag
+- tags - on the creation of a new tag
 - schedule - on a schedule
 - create branch - Pipelines specific to a new branch getting created
 
@@ -214,16 +214,16 @@ Azure Service Account Structure:
 
 ### Service Principals
 
-A service principal is an identity that is configured with specific permissions that is used to authenticate apps and services in the cloud. They should follow the Principal of Least Priviledge - restricting access to only what is necessary.
+A service principal is an identity that is configured with specific permissions that is used to authenticate apps and services in the cloud. They should follow the Principal of Least Privilege - restricting access to only what is necessary.
 
 ### Service Connections
 
-A service connection is a mechanism for an application to "connect" directly to a service account and act on behalf of that user.  In the case of this module, we are going to need to create a service conection for Azure Devops to "connect" to Azure to manage the infrastructure and deploy resources.  For further reading go [here](https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#common-service-connection-types).
+A service connection is a mechanism for an application to "connect" directly to a service account and act on behalf of that user.  In the case of this module, we are going to need to create a service connection for Azure Devops to "connect" to Azure to manage the infrastructure and deploy resources.  For further reading go [here](https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#common-service-connection-types).
 
 
 
 
-## Pipeline Variables, Environment Varibles, and Pipeline Secrets
+## Pipeline Variables, Environment Variables, and Pipeline Secrets
 Variables provide a way to make it easier to use a single pipeline, step, or task in many different contexts.   There are a couple different ways to do variables and your needs will drive which one you choose.
 ### Pipeline Variable.
 
@@ -289,7 +289,7 @@ First, [install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-G
 
 We can use the master repository in Project1 as the starting point for this module. You can either clone the repo to your machine or use it as a guide while building out your own Terraform code.
 
-We want to deploy an individual project and repository out to the Azure DevOps organization. This will best be done in a module in your Terraform code. Inside this module we will create a new main.tf file and a providers.tf file to configure the Azure DevOps provider. For guidance on configuring the Azure DevOps provider, looke [here](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs). We will need to configure the enviornnment variables for org_service_url and personal_access_token that are referenced in the "Argument Reference" portion of this documentation.
+We want to deploy an individual project and repository out to the Azure DevOps organization. This will best be done in a module in your Terraform code. Inside this module we will create a new main.tf file and a providers.tf file to configure the Azure DevOps provider. For guidance on configuring the Azure DevOps provider, look [here](https://registry.terraform.io/providers/microsoft/azuredevops/latest/docs). We will need to configure the environment variables for org_service_url and personal_access_token that are referenced in the "Argument Reference" portion of this documentation.
 
 You can create a personal access token in the Azure DevOps platform by clicking into the "User Settings" icon toward the top right of your screen.
 
@@ -309,7 +309,7 @@ To create our project and repository follow [Azure DevOps Project](https://regis
 
 Verify that your project has been deployed out the organization by accessing it here alongside "Project 1":
 
-!["Project View"](./module_2_images/AzDo_Project_View.PNG)
+!["Project View"](./images/AzDo_Project_View.PNG)
 
 We now want to push our local code base up to the master repository of the newly created project. Click into "Repos" and follow the instructions under "Push an existing repository from command line."
 
@@ -318,7 +318,7 @@ If you have cloned the repository from Project1 you will need to first run this 
 If you have not cloned the master repository and are instead working in files you have created on your machine, we will first need to initialize a git repo in your working directory. This can be done via a `git init` command. Then, the files you have created will need to be added to git source control with a `git add *` command. This will add the files to "staging" and are ready to be committed with a `git commit -m "your commit message"`. Then, follow the remaining instructions under "Push an existing repository from command line" to push your repository out to your newly created repo.
 
 
-![Push Repository](./module_2_images/push_repository.PNG)
+![Push Repository](./images/push_repository.PNG)
 
 Next, we want to create a pipelines module in the Terraform code and define a build definition.
 
@@ -326,19 +326,19 @@ This [Terraform Documentation](https://registry.terraform.io/providers/microsoft
 
 Next, a YAML file should be written defining the steps that the pipeline will perform. 
 
-These steps can inculde 'terraform init,' 'terraform plan,' 'terraform apply' etc.
+These steps can include 'terraform init,' 'terraform plan,' 'terraform apply' etc.
 
 Once the pipeline build definition and YAML file are in place we can run a `terraform validate` and `terraform plan` before running a `terraform apply` to deploy the pipeline out to our Azure DevOps repo.
 
 If the deployment succeeds we will be able to find the pipeline in the "Pipelines" section of our newly created project here:
 
-!["Empty Pipelines View"](./module_2_images/empty_pipelines_view.PNG)
+!["Empty Pipelines View"](./images/empty_pipelines_view.PNG)
 
 
 In order for the newly created pipeline to authenticate to Azure we need to configure a service connection. The service connection page can be accessed in Project Settings. Everyone will use the service principal attached to our Azure subscription to create this service connection.
 
 
-!["Image 1"](./module_2_images/Service_Connection.PNG)
+!["Image 1"](./images/Service_Connection.PNG)
 
 
 The service principal key and ID can be accessed in the Azure Portal key vault called "TestKeyVault0321"
