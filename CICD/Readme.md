@@ -56,11 +56,7 @@ MAJOR.MINOR.PATCH (2.3.4)
 2) MINOR version when you add functionality in a backwards compatible manner
 3) PATCH version when you make backwards compatible bug fixes
 
-### Forking Workflow
 
-For the modules we will use the forking workflow.  We will utilize this workflow to give everyone the same starting point on each module. At the end of each module the person with the most mature code base will submit a pull request back out to the Project1 repo that everyone else will fork from to begin the next module.
-
-For more details on the Forking workflow refer to [the previous module](../module1/Readme.md)
 ## CI/CD
 
 ![CI/CD Diagram](images/CI_CD.png)
