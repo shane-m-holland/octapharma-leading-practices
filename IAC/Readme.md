@@ -168,12 +168,6 @@ Since code is checked in, it is critical that secrets are not stored in code and
 ### **4)  Monolithic Terraform Scripts**
 Monolithic terraform scripts create bottlenecks and any issues can hold up all deploys in future scripts.
 
-## Forking Workflow
-We are going to use the forking workflow on all of these modules.  That way if you miss a module or don't get caught up then you can start with a fresh new "fork".  
-
-For further details on the forking git workflow then go [here](https://flatironinstitute.github.io/sciware-git-collaborative/03-distributed/)
-
-!["Forking Image"](images/forking-overview.png)
 
 &nbsp;
 
