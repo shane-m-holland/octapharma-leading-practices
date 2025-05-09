@@ -231,7 +231,7 @@ As part of our base Terraform code we will want to create a modular structure. T
 
 Here is a simple example of what your initial file structure should look like:
 
-!["Terraform File Structure"](images/terraform_file_structure.png)
+!["Terraform File Structure"](images/terraform_file_structure.PNG)
 
 Note: Before making any deployments via 'terraform apply' we will need to authenticate to Azure via an 'az login' command in the cli.  
 
